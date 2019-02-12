@@ -1,0 +1,52 @@
+#!/bin/sh
+# 
+# Runs a python irc bot
+# chkconfig: 35 91 64
+### BEGIN INIT INFO 
+# Provides: Sopel
+# Required-Start: $local_fs $all 
+# Required-Stop: 
+# Default-Start: 35
+# Default-Stop: 
+# Short-Description: Runs the sopel irc bot
+# Description: Manages sopel irc bot
+###END INIT INFO 
+
+broken_lock_file_for_centos=/var/lock/subsys/sopel
+
+
+# Start the daemon
+start() {
+    /sbin/runuser sopel -s /bin/sh -c "{{ sopel_install_dir }}/venv/bin/sopel -dc '{{ sopel_config_dir }}/sopel.cfg'"
+    touch "$broken_lock_file_for_centos"
+    sleep 3
+    echo " "
+}
+
+# Stop the daemon
+stop() {
+    /sbin/runuser sopel -s /bin/sh -c "{{ sopel_install_dir }}/venv/bin/sopel -qc '{{ sopel_config_dir }}/sopel.cfg'"
+    rm -f  "$broken_lock_file_for_centos"
+    sleep 3
+    echo " "
+}
+
+case "$1" in  
+      start) 
+       start
+        ;; 
+
+      stop)
+       stop
+        ;; 
+
+      restart)
+       stop
+       start
+        ;;  
+
+         *)
+       echo $"Usage: $0 {start|stop|restart}" 
+       exit 5 
+esac 
+exit $?
