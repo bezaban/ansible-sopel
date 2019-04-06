@@ -22,10 +22,9 @@ channels = {{ sopel_channels|join(',') }}
 nick_blocks = {{ sopel_ignored_nicks|join(',') }}
 host_blocks = {{ sopel_ignored_hosts|join(',') }}
 
-
 [admin]
 hold_ground = false
-auto_accept_invite = true
+auto_accept_invite = false
 
 [wikipedia]
 default_lang = en
