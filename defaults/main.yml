@@ -38,3 +38,6 @@ sopel_ignored_hosts:
 # Default timezone and time format. http://strftime.org/ for format info
 sopel_timezone: 'Europe/Copenhagen'
 sopel_time_format: '[%Y-%m-%d - %T %Z]'
+
+# Do not install any modules by default
+sopel_install_modules: false
