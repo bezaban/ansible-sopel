@@ -1,0 +1,4 @@
+- name: restart sopel 
+  service:
+    name: sopel
+    state: restarted

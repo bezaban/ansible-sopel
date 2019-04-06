@@ -60,6 +60,7 @@
     group: sopel
     src: templates/sopel.cfg.j2
     dest: '{{ sopel_config_dir }}/sopel.cfg'
+  notify: restart sopel
 
 - name: Add sopel systemd service
   become: true
