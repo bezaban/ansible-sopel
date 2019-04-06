@@ -26,5 +26,5 @@ galaxy_info:
     - "bot"
     - "networking"
 
-dependencies:
-  - {role: "spk83.python3", when: sopel_install_python3}
+#dependencies:
+#  - {role: "spk83.python3", when: sopel_install_python3}
