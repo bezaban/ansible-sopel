@@ -32,3 +32,13 @@ default_lang = en
 [clock]
 tz = {{ sopel_timezone }}
 time_format = {{ sopel_time_format }}
+
+{%if sopel_module_config.github is defined%}[github]
+{%if sopel_module_config.github.webhook%}webhook = true
+webhook_host = 127.0.0.1
+webhook_port = 3333
+external_url = {{ sopel_module_config.github.external_url }}
+{%endif%}
+client_id = {{ sopel_module_config.github.client_id }}
+secret = {{ sopel_module_config.github.secret }}
+{%endif%}
