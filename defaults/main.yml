@@ -41,6 +41,7 @@ sopel_time_format: '[%Y-%m-%d - %T %Z]'
 
 # Do not install any modules by default
 sopel_install_modules: false
+sopel_install_indev_modules: false
 
 # IRC details
 sopel_username: ''
