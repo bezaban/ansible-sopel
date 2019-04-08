@@ -150,6 +150,16 @@
         ansible_distribution_version|int > 8 and
         sopel_install_modules)
 
+- name: Force reinstall av indev modules
+  environment:
+    LC_ALL: 'en_US.UTF-8'
+  pip:
+    name: '{{ sopel_indev_modules }}'
+    state: forcereinstall 
+    virtualenv: '{{ sopel_install_dir }}/venv'
+    virtualenv_command: /usr/bin/python3 -m venv
+  when: sopel_install_indev_modules
+
 - name: Start and enable sopel
   become: true
   service:
